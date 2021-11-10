@@ -1,4 +1,9 @@
 module.exports = {
+  env: {
+    node: true,
+    browser: true,
+    es6: true
+  },
   extends: ['airbnb', 'airbnb/hooks', 'eslint-config-prettier'],
   plugins: ['react', '@typescript-eslint'],
   rules: {
