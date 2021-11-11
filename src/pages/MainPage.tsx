@@ -5,6 +5,7 @@ import { Note } from 'tone/build/esm/core/type/NoteUnits';
 import { pianoOption } from '../constants/PianoOption';
 import { pianobarList } from '../constants/PianoBarList';
 import { BlackBar, WhiteBar } from '../components/PianoBar';
+import { getKoreanNoteByEnglish } from '../Util';
 
 const Container = styled.div`
   background-color: #e5eff8;
@@ -43,11 +44,15 @@ const MainPage: React.FC = () => {
   return (
     <Container>
       <PianoContainer>
-        {pianobarList.map(({ color, note }, index) => {
+        {pianobarList.map(({ color, note }) => {
           if (color === 'white') {
-            return <WhiteBar key={`white-${index}`} onClick={() => onBarClick(note)} />;
+            return (
+              <WhiteBar key={`white-${note}`} onClick={() => onBarClick(note)}>
+                {getKoreanNoteByEnglish(note)}
+              </WhiteBar>
+            );
           }
-          return <BlackBar key={`black-${index}`} onClick={() => onBarClick(note)} />;
+          return <BlackBar key={`black-${note}`} onClick={() => onBarClick(note)} />;
         })}
       </PianoContainer>
       <br />

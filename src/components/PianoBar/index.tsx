@@ -14,6 +14,13 @@ export const WhiteBar = styled.div`
   cursor: pointer;
   z-index: 1;
 
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  font-size: 14px;
+  padding-bottom: 4px;
+
   &:active {
     background: #ffffff;
   }
@@ -23,7 +30,7 @@ export const WhiteBar = styled.div`
   }
 
   &:last-of-type {
-    border-right: 1px solid #696969;
+    border-right: 1px solid #949494;
     border-top-right-radius: 5px;
   }
 `;
