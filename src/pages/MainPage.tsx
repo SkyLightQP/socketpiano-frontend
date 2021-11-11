@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
 import * as Tone from 'tone';
 import { Note } from 'tone/build/esm/core/type/NoteUnits';
+import { pianoOption } from '../constants/PianoOption';
+import { pianobarList } from '../constants/PianoBarList';
 
 const Container = styled.div`
   background-color: #e5eff8;
@@ -61,43 +63,6 @@ const BlackBar = styled.div`
   }
 `;
 
-const pianoOption = {
-  urls: {
-    A0: 'A0.mp3',
-    C1: 'C1.mp3',
-    'D#1': 'Ds1.mp3',
-    'F#1': 'Fs1.mp3',
-    A1: 'A1.mp3',
-    C2: 'C2.mp3',
-    'D#2': 'Ds2.mp3',
-    'F#2': 'Fs2.mp3',
-    A2: 'A2.mp3',
-    C3: 'C3.mp3',
-    'D#3': 'Ds3.mp3',
-    'F#3': 'Fs3.mp3',
-    A3: 'A3.mp3',
-    C4: 'C4.mp3',
-    'D#4': 'Ds4.mp3',
-    'F#4': 'Fs4.mp3',
-    A4: 'A4.mp3',
-    C5: 'C5.mp3',
-    'D#5': 'Ds5.mp3',
-    'F#5': 'Fs5.mp3',
-    A5: 'A5.mp3',
-    C6: 'C6.mp3',
-    'D#6': 'Ds6.mp3',
-    'F#6': 'Fs6.mp3',
-    A6: 'A6.mp3',
-    C7: 'C7.mp3',
-    'D#7': 'Ds7.mp3',
-    'F#7': 'Fs7.mp3',
-    A7: 'A7.mp3',
-    C8: 'C8.mp3'
-  },
-  release: 10,
-  baseUrl: 'https://tonejs.github.io/audio/salamander/'
-};
-
 const MainPage: React.FC = () => {
   const piano = useMemo(() => new Tone.Sampler(pianoOption).toDestination(), []);
 
@@ -108,19 +73,12 @@ const MainPage: React.FC = () => {
   return (
     <Container>
       <PianoContainer>
-        <WhiteBar onClick={() => onBarClick('C4')} />
-        <BlackBar onClick={() => onBarClick('C#4')} />
-        <WhiteBar onClick={() => onBarClick('D4')} />
-        <BlackBar onClick={() => onBarClick('D#4')} />
-        <WhiteBar onClick={() => onBarClick('E4')} />
-        <WhiteBar onClick={() => onBarClick('F4')} />
-        <BlackBar onClick={() => onBarClick('F#4')} />
-        <WhiteBar onClick={() => onBarClick('G4')} />
-        <BlackBar onClick={() => onBarClick('G#4')} />
-        <WhiteBar onClick={() => onBarClick('A4')} />
-        <BlackBar onClick={() => onBarClick('A#4')} />
-        <WhiteBar onClick={() => onBarClick('B4')} />
-        <WhiteBar onClick={() => onBarClick('C5')} />
+        {pianobarList.map(({ color, note }) => {
+          if (color === 'white') {
+            return <WhiteBar onClick={() => onBarClick(note)} />;
+          }
+          return <BlackBar onClick={() => onBarClick(note)} />;
+        })}
       </PianoContainer>
     </Container>
   );
