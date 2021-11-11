@@ -10,6 +10,8 @@ const Container = styled.div`
   background-color: #e5eff8;
 
   display: flex;
+  flex-direction: column;
+
   justify-content: center;
   align-items: center;
 
@@ -39,6 +41,17 @@ const MainPage: React.FC = () => {
           return <BlackBar onClick={() => onBarClick(note)} />;
         })}
       </PianoContainer>
+      <br />
+      <input
+        type="range"
+        min="-10"
+        max="10"
+        defaultValue={0}
+        step={1}
+        onChange={(e) => {
+          piano.volume.value = Number(e.target.value);
+        }}
+      />
     </Container>
   );
 };
