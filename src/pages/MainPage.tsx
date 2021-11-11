@@ -21,6 +21,24 @@ const Container = styled.div`
 const PianoContainer = styled.div`
   display: flex;
   flex-direction: row;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+`;
+
+const Piano = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const MenuContainer = styled.div`
+  width: 100vw;
+  height: 400px;
+
+  background-color: #e3e3e3;
 `;
 
 const MainPage: React.FC = () => {
@@ -42,26 +60,30 @@ const MainPage: React.FC = () => {
   return (
     <Container>
       <PianoContainer>
-        {pianobarList.map(({ color, note }) => {
-          if (color === 'white') {
-            return (
-              <WhiteBar key={`white-${note}`} onClick={() => onBarClick(note)}>
-                {getKoreanNoteByEnglish(note)}
-              </WhiteBar>
-            );
-          }
-          return <BlackBar key={`black-${note}`} onClick={() => onBarClick(note)} />;
-        })}
+        <Piano>
+          {pianobarList.map(({ color, note }) => {
+            if (color === 'white') {
+              return (
+                <WhiteBar key={`white-${note}`} onClick={() => onBarClick(note)}>
+                  {getKoreanNoteByEnglish(note)}
+                </WhiteBar>
+              );
+            }
+            return <BlackBar key={`black-${note}`} onClick={() => onBarClick(note)} />;
+          })}
+        </Piano>
       </PianoContainer>
-      <br />
-      <input
-        type="range"
-        min="-10"
-        max="10"
-        defaultValue={0}
-        step={1}
-        onChange={(e) => onVolumeChange(Number(e.target.value))}
-      />
+      <MenuContainer>
+        <br />
+        <input
+          type="range"
+          min="-10"
+          max="10"
+          defaultValue={0}
+          step={1}
+          onChange={(e) => onVolumeChange(Number(e.target.value))}
+        />
+      </MenuContainer>
     </Container>
   );
 };
