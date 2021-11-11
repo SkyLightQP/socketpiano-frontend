@@ -6,6 +6,7 @@ module.exports = {
   },
   extends: ['airbnb', 'airbnb/hooks', 'eslint-config-prettier'],
   plugins: ['react', '@typescript-eslint'],
+  parser: '@typescript-eslint/parser',
   rules: {
     'arrow-body-style': 'off',
     'jsx-quotes': 'off',
