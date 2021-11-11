@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
+const WHITE_WIDTH = 2.2;
+
 export const WhiteBar = styled.div`
-  height: 16rem;
-  width: 4rem;
+  height: 12rem;
+  width: ${WHITE_WIDTH}rem;
 
   border: 1px solid #111111;
   border-radius: 0 0 5px 5px;
@@ -25,11 +27,11 @@ export const WhiteBar = styled.div`
 `;
 
 export const BlackBar = styled.div`
-  height: 10rem;
-  width: 2rem;
+  height: 8rem;
+  width: ${WHITE_WIDTH / 2}rem;
 
-  margin-right: -1rem;
-  margin-left: -1rem;
+  margin-right: -${WHITE_WIDTH / 4}rem;
+  margin-left: -${WHITE_WIDTH / 4}rem;
 
   border: 1px solid #111111;
   background: #333333;
