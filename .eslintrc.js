@@ -19,6 +19,7 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
 
     'import/extensions': 'off',
-    'import/no-unresolved': 'off'
+    'import/no-unresolved': 'off',
+    'import/prefer-default-export': 'off'
   }
 };
