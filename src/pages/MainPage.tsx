@@ -43,11 +43,11 @@ const MainPage: React.FC = () => {
   return (
     <Container>
       <PianoContainer>
-        {pianobarList.map(({ color, note }) => {
+        {pianobarList.map(({ color, note }, index) => {
           if (color === 'white') {
-            return <WhiteBar onClick={() => onBarClick(note)} />;
+            return <WhiteBar key={`white-${index}`} onClick={() => onBarClick(note)} />;
           }
-          return <BlackBar onClick={() => onBarClick(note)} />;
+          return <BlackBar key={`black-${index}`} onClick={() => onBarClick(note)} />;
         })}
       </PianoContainer>
       <br />

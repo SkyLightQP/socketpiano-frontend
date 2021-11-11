@@ -15,11 +15,11 @@ export const WhiteBar = styled.div`
     background: #ffffff;
   }
 
-  &:first-child {
+  &:first-of-type {
     border-top-left-radius: 5px;
   }
 
-  &:last-child {
+  &:last-of-type {
     border-top-right-radius: 5px;
   }
 `;
