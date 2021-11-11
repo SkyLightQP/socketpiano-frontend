@@ -31,6 +31,15 @@ const MainPage: React.FC = () => {
     piano.triggerAttackRelease(note, 1);
   };
 
+  const onVolumeChange = (vol: number) => {
+    if (vol <= -10) {
+      piano.volume.value = -100;
+      return;
+    }
+
+    piano.volume.value = vol;
+  };
+
   return (
     <Container>
       <PianoContainer>
@@ -48,9 +57,7 @@ const MainPage: React.FC = () => {
         max="10"
         defaultValue={0}
         step={1}
-        onChange={(e) => {
-          piano.volume.value = Number(e.target.value);
-        }}
+        onChange={(e) => onVolumeChange(Number(e.target.value))}
       />
     </Container>
   );
