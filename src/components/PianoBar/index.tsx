@@ -6,7 +6,8 @@ export const WhiteBar = styled.div`
   height: 12rem;
   width: ${WHITE_WIDTH}rem;
 
-  border: 1px solid #111111;
+  border: 1px solid #949494;
+  border-right: none;
   border-radius: 0 0 5px 5px;
   background: #f1f1f1;
 
@@ -22,6 +23,7 @@ export const WhiteBar = styled.div`
   }
 
   &:last-of-type {
+    border-right: 1px solid #696969;
     border-top-right-radius: 5px;
   }
 `;
