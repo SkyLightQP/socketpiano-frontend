@@ -1,12 +1,23 @@
 module.exports = {
   env: {
+    commonjs: true,
     node: true,
-    browser: true,
-    es6: true
+    browser: true
   },
-  extends: ['airbnb', 'airbnb/hooks', 'eslint-config-prettier'],
-  plugins: ['react', '@typescript-eslint'],
-  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true
+    },
+    sourceType: 'module',
+    ecmaVersion: 2018
+  },
+  extends: [
+    'eslint:recommended',
+    'airbnb',
+    'airbnb/hooks',
+    'eslint-config-prettier',
+    'plugin:@typescript-eslint/recommended'
+  ],
   rules: {
     'arrow-body-style': 'off',
     'jsx-quotes': 'off',
@@ -21,6 +32,8 @@ module.exports = {
 
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
-    'import/prefer-default-export': 'off'
+    'import/prefer-default-export': 'off',
+
+    'no-use-before-define': 'off'
   }
 };
