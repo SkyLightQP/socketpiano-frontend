@@ -8,8 +8,6 @@ import { BlackBar, WhiteBar } from '../components/PianoBar';
 import { getKoreanNoteByEnglish } from '../Util';
 
 const Container = styled.div`
-  background-color: #e5eff8;
-
   display: flex;
   flex-direction: column;
 
@@ -17,7 +15,7 @@ const Container = styled.div`
   align-items: center;
 
   width: 100vw;
-  height: 400px;
+  height: 100vh;
 `;
 
 const PianoContainer = styled.div`
