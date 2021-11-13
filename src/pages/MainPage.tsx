@@ -36,9 +36,26 @@ const Piano = styled.div`
 
 const MenuContainer = styled.div`
   width: 100vw;
-  height: 400px;
+  height: 200px;
+
+  padding: 2rem;
 
   background-color: #e3e3e3;
+
+  & > div {
+    margin-bottom: 8px;
+  }
+`;
+
+const Field = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & > span {
+    width: 80px;
+    margin-right: 4px;
+  }
 `;
 
 const MainPage: React.FC = () => {
@@ -74,15 +91,22 @@ const MainPage: React.FC = () => {
         </Piano>
       </PianoContainer>
       <MenuContainer>
-        <br />
-        <input
-          type="range"
-          min="-10"
-          max="10"
-          defaultValue={0}
-          step={1}
-          onChange={(e) => onVolumeChange(Number(e.target.value))}
-        />
+        <Field>
+          <span>내 소리</span>
+          <input
+            type="range"
+            min="-10"
+            max="10"
+            defaultValue={0}
+            step={1}
+            onChange={(e) => onVolumeChange(Number(e.target.value))}
+          />
+        </Field>
+
+        <Field>
+          <span>상대방 소리</span>
+          <input type="range" min="-10" max="10" defaultValue={0} step={1} disabled />
+        </Field>
       </MenuContainer>
     </Container>
   );
