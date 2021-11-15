@@ -1,8 +1,9 @@
 import { KeyboardEvent } from 'react';
 import { Note } from 'tone/build/esm/core/type/NoteUnits';
 
-const usePianoKey = (callback: (note: Note) => void): ((e: KeyboardEvent<HTMLDivElement>) => void) => {
-  return (e: KeyboardEvent<HTMLDivElement>) => {
+const usePianoKey =
+  (callback: (note: Note) => void) =>
+  (e: KeyboardEvent<HTMLDivElement>): void => {
     switch (e.key.toLowerCase()) {
       case 'a':
         callback('C4');
@@ -37,10 +38,30 @@ const usePianoKey = (callback: (note: Note) => void): ((e: KeyboardEvent<HTMLDiv
       case "'":
         callback('F5');
         break;
+      case 'q':
+        callback('C#4');
+        break;
+      case 'w':
+        callback('D#4');
+        break;
+      case 'r':
+        callback('F#4');
+        break;
+      case 't':
+        callback('G#4');
+        break;
+      case 'y':
+        callback('A#4');
+        break;
+      case 'i':
+        callback('C#5');
+        break;
+      case 'o':
+        callback('D#5');
+        break;
       default:
         break;
     }
   };
-};
 
 export default usePianoKey;

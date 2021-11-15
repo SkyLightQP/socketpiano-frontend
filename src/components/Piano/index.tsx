@@ -20,12 +20,12 @@ const Piano: React.FC<PianoProps> = ({ onBarClick }) => {
       {pianobarList.map(({ color, note }) => {
         if (color === 'white') {
           return (
-            <WhiteBar key={`white-${note}`} onClick={() => onBarClick && onBarClick(note)}>
+            <WhiteBar id={note} key={`white-${note}`} onClick={() => onBarClick && onBarClick(note)}>
               {getKoreanNoteByEnglish(note)}
             </WhiteBar>
           );
         }
-        return <BlackBar key={`black-${note}`} onClick={() => onBarClick && onBarClick(note)} />;
+        return <BlackBar id={note} key={`black-${note}`} onClick={() => onBarClick && onBarClick(note)} />;
       })}
     </StyledPiano>
   );
