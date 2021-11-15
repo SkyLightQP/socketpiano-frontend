@@ -35,8 +35,17 @@ const PianoContainer = styled.div`
 
 const MainPage: React.FC = () => {
   const piano = useMemo(() => new Tone.Sampler(pianoOption).toDestination(), []);
-  const pianoKey = usePianoKey((note) => {
+  const onKeyDown = usePianoKey((note) => {
     piano.triggerAttackRelease(note, 1);
+
+    const ele = document.getElementById(note);
+    if (!ele) return;
+    ele.classList.add('active');
+  });
+  const onKeyUp = usePianoKey((note) => {
+    const ele = document.getElementById(note);
+    if (!ele) return;
+    ele.classList.remove('active');
   });
 
   const onBarClick = (note: Note) => {
@@ -53,7 +62,7 @@ const MainPage: React.FC = () => {
   };
 
   return (
-    <Container tabIndex={0} onKeyDown={pianoKey}>
+    <Container tabIndex={0} onKeyDown={onKeyDown} onKeyUp={onKeyUp}>
       <PianoContainer>
         <Piano onBarClick={onBarClick} />
       </PianoContainer>

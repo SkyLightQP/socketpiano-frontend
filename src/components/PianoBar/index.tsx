@@ -21,7 +21,8 @@ export const WhiteBar = styled.div`
   font-size: 14px;
   padding-bottom: 4px;
 
-  &:active {
+  &:active,
+  &.active {
     background: #ffffff;
   }
 
@@ -48,7 +49,8 @@ export const BlackBar = styled.div`
   cursor: pointer;
   z-index: 2;
 
-  &:active {
+  &:active,
+  &.active {
     background: #111111;
   }
 `;
