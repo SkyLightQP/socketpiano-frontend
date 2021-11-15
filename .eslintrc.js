@@ -9,7 +9,7 @@ module.exports = {
       jsx: true
     },
     sourceType: 'module',
-    ecmaVersion: 2018
+    ecmaVersion: 2021
   },
   extends: [
     'eslint:recommended',
