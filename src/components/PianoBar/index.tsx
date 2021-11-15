@@ -49,6 +49,6 @@ export const BlackBar = styled.div`
   z-index: 2;
 
   &:active {
-    background: #222222;
+    background: #111111;
   }
 `;
