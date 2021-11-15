@@ -9,7 +9,7 @@ export const WhiteBar = styled.div`
   border: 1px solid #949494;
   border-right: none;
   border-radius: 0 0 5px 5px;
-  background: #f1f1f1;
+  background-color: #f1f1f1;
 
   cursor: pointer;
   z-index: 1;
@@ -23,7 +23,7 @@ export const WhiteBar = styled.div`
 
   &:active,
   &.active {
-    background: #ffffff;
+    background-color: #ffffff;
   }
 
   &:first-of-type {
@@ -44,13 +44,13 @@ export const BlackBar = styled.div`
   margin-left: -${WHITE_WIDTH / 4}rem;
 
   border: 1px solid #111111;
-  background: #333333;
+  background-color: #333333;
 
   cursor: pointer;
   z-index: 2;
 
   &:active,
   &.active {
-    background: #111111;
+    background-color: #111111;
   }
 `;
