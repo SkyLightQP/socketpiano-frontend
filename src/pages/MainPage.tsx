@@ -58,6 +58,15 @@ const MainPage: React.FC = () => {
     piano.volume.value = vol;
   };
 
+  const onOtherVolumeChange = (vol: number) => {
+    if (vol <= -10) {
+      otherPiano.volume.value = -100;
+      return;
+    }
+
+    otherPiano.volume.value = vol;
+  };
+
   useEffect(() => {
     const handlePiano = (data: string) => {
       otherPiano.triggerAttackRelease(data, 1);
@@ -76,7 +85,7 @@ const MainPage: React.FC = () => {
         <Piano onBarClick={onBarClick} />
       </PianoContainer>
 
-      <Menu onVolumeChange={onVolumeChange} />
+      <Menu onVolumeChange={onVolumeChange} onOtherVolumeChange={onOtherVolumeChange} />
     </Container>
   );
 };

@@ -27,9 +27,10 @@ const Field = styled.div`
 
 interface MenuProps {
   readonly onVolumeChange?: (vol: number) => void;
+  readonly onOtherVolumeChange?: (vol: number) => void;
 }
 
-const Menu: React.FC<MenuProps> = ({ onVolumeChange }) => {
+const Menu: React.FC<MenuProps> = ({ onVolumeChange, onOtherVolumeChange }) => {
   return (
     <MenuContainer>
       <Field>
@@ -46,14 +47,22 @@ const Menu: React.FC<MenuProps> = ({ onVolumeChange }) => {
 
       <Field>
         <span>상대방 소리</span>
-        <input type="range" min="-10" max="10" defaultValue={0} step={1} disabled />
+        <input
+          type="range"
+          min="-10"
+          max="10"
+          defaultValue={0}
+          step={1}
+          onChange={(e) => onOtherVolumeChange && onOtherVolumeChange(Number(e.target.value))}
+        />
       </Field>
     </MenuContainer>
   );
 };
 
 Menu.defaultProps = {
-  onVolumeChange: undefined
+  onVolumeChange: undefined,
+  onOtherVolumeChange: undefined
 };
 
 export default Menu;
