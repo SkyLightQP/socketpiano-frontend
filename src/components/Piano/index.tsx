@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Note } from 'tone/build/esm/core/type/NoteUnits';
 import { pianobarList } from '../../constants/PianoBarList';
 import { BlackBar, WhiteBar } from '../PianoBar';
-import { getKoreanNoteByEnglish } from '../../Util';
+import { getKoreanNoteByEnglish } from '../../utils';
 
 const StyledPiano = styled.div`
   display: flex;
