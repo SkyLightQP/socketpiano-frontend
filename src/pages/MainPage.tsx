@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import styled from '@emotion/styled';
 import * as Tone from 'tone';
 import { Note } from 'tone/build/esm/core/type/NoteUnits';
@@ -6,6 +6,7 @@ import { pianoOption } from '../constants/PianoOption';
 import Menu from '../components/Menu';
 import Piano from '../components/Piano';
 import usePianoKey from '../hooks/usePianoKey';
+import { useSocket } from '../hooks/useSocket';
 
 const Container = styled.div`
   display: flex;
@@ -34,22 +35,18 @@ const PianoContainer = styled.div`
 `;
 
 const MainPage: React.FC = () => {
+  const socket = useSocket();
   const piano = useMemo(() => new Tone.Sampler(pianoOption).toDestination(), []);
+  const otherPiano = useMemo(() => new Tone.Sampler(pianoOption).toDestination(), []);
   const onKeyDown = usePianoKey((note) => {
-    piano.triggerAttackRelease(note, 1);
-
-    const ele = document.getElementById(note);
-    if (!ele) return;
-    ele.classList.add('active');
+    onBarClick(note);
+    document.getElementById(note)?.classList.add('active');
   });
-  const onKeyUp = usePianoKey((note) => {
-    const ele = document.getElementById(note);
-    if (!ele) return;
-    ele.classList.remove('active');
-  });
+  const onKeyUp = usePianoKey((note) => document.getElementById(note)?.classList.remove('active'));
 
   const onBarClick = (note: Note) => {
     piano.triggerAttackRelease(note, 1);
+    socket?.emit('piano', note);
   };
 
   const onVolumeChange = (vol: number) => {
@@ -60,6 +57,18 @@ const MainPage: React.FC = () => {
 
     piano.volume.value = vol;
   };
+
+  useEffect(() => {
+    const handlePiano = (data: string) => {
+      otherPiano.triggerAttackRelease(data, 1);
+    };
+
+    socket?.on('piano', handlePiano);
+
+    return () => {
+      socket?.off('piano', handlePiano);
+    };
+  }, [socket, otherPiano]);
 
   return (
     <Container tabIndex={0} onKeyDown={onKeyDown} onKeyUp={onKeyUp}>
