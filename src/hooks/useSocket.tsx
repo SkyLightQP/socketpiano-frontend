@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
 
 const context = createContext<Socket | undefined>(undefined);
-const HOST = 'http://localhost:8080';
+const HOST = process.env.REACT_APP_BACKEND ?? 'http://localhost:8080';
 
 export const SocketProvider: React.FC = ({ children }) => {
   const [socket, setSocket] = useState<Socket | undefined>();
